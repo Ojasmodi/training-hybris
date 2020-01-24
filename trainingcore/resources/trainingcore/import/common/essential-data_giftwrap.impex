@@ -1,0 +1,4 @@
+INSERT_UPDATE GiftWrap;code[unique=true];cost;type;description
+;1;12;STANDARD;Occasional tribute rock band 
+;2;13;STANDARD;Dutch tribute rock band formed in 2013 
+;3;14;PREMIUM;experimental Jazz group from London playing many musical notes 

@@ -1,0 +1,34 @@
+
+$contentCatalog=apparel-ukContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+
+#creating a new page template
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true]    ;name                  ;frontendTemplateName     ;restrictedPageTypes(code);active[default=true]
+                          ;                       ;GiftwrapPageTemplate;GiftWrap Page Template;offers/giftwrapLayoutPage;ContentPage
+
+#Create a new content page
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true]   ;name                 ;masterTemplate(uid,$contentCV);label          ;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false']
+                         ;                       ;giftWrapContentPage;GiftWrap Content Page;GiftwrapPageTemplate          ;giftwrapCMSPage
+
+#Create content slot names required for the template
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='OffersPageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;SiteLogo         ;                                                                   ;						 ;logo
+ 						     ;HeaderLinks      ;                                                                   ;                         ;headerlinks
+                             ;SearchBox        ;                                                                   ;                         ;searchbox
+                             ;MiniCart         ;                                                                   ;                         ;minicart
+							 ;NavigationBar    ;																   ;						 ;navigation
+							 ;Footer           ;                                                                   ;                         ;footer
+							 ;TopHeaderSlot    ;                                                                   ;                         ;wide
+							 ;offersParagraph  ;                                                                   ;                         ;wide
+							 ;offersBanner     ;                                                                   ;                         ;wide
+
+#Create components
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;offerHeadingComponent;Offers Heading information;offerHeadingComponent;;;;Special Offers for you;
+ 
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;urlLink
+;;offer1BannerComponent;Offer1 Banner Component;offer1BannerComponent;;;;/Categories/Streetwear-men/T-Shirts-men/Eclipse-Tee-SS/p/300737415
+;;offer2BannerComponent;Offer2 Banner Component;offer2BannerComponent;;;;Categories/Accessories-women/Watches-women/Biarritz-Women/p/111114_black
+;;offer3BannerComponent;Offer3 Banner Component;offer3BannerComponent;;;;Categories/Accessories/Caps/Ginga-Cap/p/300604624							 
+							 

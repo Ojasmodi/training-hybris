@@ -1,0 +1,7 @@
+# ImpEx for Importing Bands' German attributes
+$lang=de
+
+INSERT_UPDATE GiftWrap;code[unique=true];description[lang=$lang]
+;7;Gelegentliche Tribute Rock Band
+;8;Niederländische Tribute-Rockband, gegründet 2013
+;9;experimentelle Jazzgruppe aus London, die viele Noten spielt
