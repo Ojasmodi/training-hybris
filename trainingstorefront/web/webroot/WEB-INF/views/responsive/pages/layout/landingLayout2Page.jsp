@@ -24,6 +24,7 @@
             </cms:pageSlot>
         </div>
     </div>
+    
 
     <cms:pageSlot position="Section3" var="feature" element="div" class="row no-margin" >
         <cms:component component="${feature}" element="div" class="no-space yComponentWrapper"/>

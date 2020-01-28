@@ -12,8 +12,8 @@
 			autocreate="true" generate="true" type="list" />
 		<collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum"
 			autocreate="true" generate="true" type="set" />
-		<collectiontype code="GiftWrapList" elementtype="GiftWrap"
-			autocreate="true" generate="true" type="list" />
+<!-- 		<collectiontype code="GiftWrapList" elementtype="GiftWrap" -->
+<!-- 			autocreate="true" generate="true" type="list" /> -->
 	</collectiontypes>
 
 	<enumtypes>
@@ -83,18 +83,18 @@
 			</attributes>
 		</itemtype>
 
-		<itemtype code="GiftWrapComponent" extends="SimpleCMSComponent"
-			autocreate="true">
-			<deployment table="GiftWrapComponent" typecode="12001" />
-			<attributes>
-				<attribute type="GiftWrapList" qualifier="listOfGiftWraps">
-					<persistence type="property" />
-				</attribute>
-				<attribute type="Media" qualifier="giftWrapImage">
-					<persistence type="property" />
-				</attribute>
-			</attributes>
-		</itemtype>
+<!-- 		<itemtype code="GiftWrapComponent" extends="SimpleCMSComponent" -->
+<!-- 			autocreate="true"> -->
+<!-- 			<deployment table="GiftWrapComponent" typecode="12001" /> -->
+<!-- 			<attributes> -->
+<!-- 				<attribute type="GiftWrapList" qualifier="listOfGiftWraps"> -->
+<!-- 					<persistence type="property" /> -->
+<!-- 				</attribute> -->
+<!-- 				<attribute type="Media" qualifier="giftWrapImage"> -->
+<!-- 					<persistence type="property" /> -->
+<!-- 				</attribute> -->
+<!-- 			</attributes> -->
+<!-- 		</itemtype> -->
 
 
 

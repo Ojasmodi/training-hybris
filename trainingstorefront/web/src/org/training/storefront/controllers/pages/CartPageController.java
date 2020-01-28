@@ -47,7 +47,6 @@ import de.hybris.platform.core.enums.QuoteState;
 import de.hybris.platform.enumeration.EnumerationService;
 import de.hybris.platform.site.BaseSiteService;
 import de.hybris.platform.util.Config;
-import org.training.storefront.controllers.ControllerConstants;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -76,6 +75,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.training.core.services.GiftWrapService;
+import org.training.storefront.controllers.ControllerConstants;
 
 
 /**
@@ -127,6 +128,9 @@ public class CartPageController extends AbstractCartPageController
 	@Resource(name = "cartEntryActionFacade")
 	private CartEntryActionFacade cartEntryActionFacade;
 
+	@Resource
+	private GiftWrapService giftWrapService;
+
 	@ModelAttribute("showCheckoutStrategies")
 	public boolean isCheckoutStrategyVisible()
 	{
@@ -136,8 +140,21 @@ public class CartPageController extends AbstractCartPageController
 	@RequestMapping(method = RequestMethod.GET)
 	public String showCart(final Model model) throws CMSItemNotFoundException
 	{
+		LOG.error("Reached");
+		// adding giftwrap model here
+		//addGiftWrapData(model);
 		return prepareCartUrl(model);
 	}
+
+	/**
+	 * @param model
+	 */
+	//	private void addGiftWrapData(final Model model)
+	//	{
+	//		// XXX Auto-generated method stub
+	//		final List<GiftWrapModel> giftWraps = giftWrapService.getAllGiftWraps();
+	//		model.addAttribute("listOfGiftWraps", giftWraps);
+	//	}
 
 	protected String prepareCartUrl(final Model model) throws CMSItemNotFoundException
 	{
@@ -562,6 +579,7 @@ public class CartPageController extends AbstractCartPageController
 		return REDIRECT_CART_URL;
 	}
 
+	@Override
 	public BaseSiteService getBaseSiteService()
 	{
 		return baseSiteService;
