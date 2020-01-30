@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 28 Jan, 2020 2:11:20 PM                     ---
+ * --- Generated at 30 Jan, 2020 12:18:10 PM                    ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -19,13 +19,13 @@ import java.util.Map;
 import org.training.core.constants.TrainingCoreConstants;
 
 /**
- * Generated class for type {@link de.hybris.platform.jalo.GenericItem GiftWrap}.
+ * Generated class for type {@link org.training.core.jalo.GiftWrap GiftWrap}.
  */
 @SuppressWarnings({"deprecation","unused","cast","PMD"})
 public abstract class GeneratedGiftWrap extends GenericItem
 {
-	/** Qualifier of the <code>GiftWrap.type</code> attribute **/
-	public static final String TYPE = "type";
+	/** Qualifier of the <code>GiftWrap.giftWrapType</code> attribute **/
+	public static final String GIFTWRAPTYPE = "giftWrapType";
 	/** Qualifier of the <code>GiftWrap.code</code> attribute **/
 	public static final String CODE = "code";
 	/** Qualifier of the <code>GiftWrap.cost</code> attribute **/
@@ -36,7 +36,7 @@ public abstract class GeneratedGiftWrap extends GenericItem
 	static
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
-		tmp.put(TYPE, AttributeMode.INITIAL);
+		tmp.put(GIFTWRAPTYPE, AttributeMode.INITIAL);
 		tmp.put(CODE, AttributeMode.INITIAL);
 		tmp.put(COST, AttributeMode.INITIAL);
 		tmp.put(DESCRIPTION, AttributeMode.INITIAL);
@@ -88,16 +88,16 @@ public abstract class GeneratedGiftWrap extends GenericItem
 	 * <i>Generated method</i> - Getter of the <code>GiftWrap.cost</code> attribute.
 	 * @return the cost
 	 */
-	public Integer getCost(final SessionContext ctx)
+	public Double getCost(final SessionContext ctx)
 	{
-		return (Integer)getProperty( ctx, COST);
+		return (Double)getProperty( ctx, COST);
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>GiftWrap.cost</code> attribute.
 	 * @return the cost
 	 */
-	public Integer getCost()
+	public Double getCost()
 	{
 		return getCost( getSession().getSessionContext() );
 	}
@@ -106,17 +106,17 @@ public abstract class GeneratedGiftWrap extends GenericItem
 	 * <i>Generated method</i> - Getter of the <code>GiftWrap.cost</code> attribute. 
 	 * @return the cost
 	 */
-	public int getCostAsPrimitive(final SessionContext ctx)
+	public double getCostAsPrimitive(final SessionContext ctx)
 	{
-		Integer value = getCost( ctx );
-		return value != null ? value.intValue() : 0;
+		Double value = getCost( ctx );
+		return value != null ? value.doubleValue() : 0.0d;
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>GiftWrap.cost</code> attribute. 
 	 * @return the cost
 	 */
-	public int getCostAsPrimitive()
+	public double getCostAsPrimitive()
 	{
 		return getCostAsPrimitive( getSession().getSessionContext() );
 	}
@@ -125,7 +125,7 @@ public abstract class GeneratedGiftWrap extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>GiftWrap.cost</code> attribute. 
 	 * @param value the cost
 	 */
-	public void setCost(final SessionContext ctx, final Integer value)
+	public void setCost(final SessionContext ctx, final Double value)
 	{
 		setProperty(ctx, COST,value);
 	}
@@ -134,7 +134,7 @@ public abstract class GeneratedGiftWrap extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>GiftWrap.cost</code> attribute. 
 	 * @param value the cost
 	 */
-	public void setCost(final Integer value)
+	public void setCost(final Double value)
 	{
 		setCost( getSession().getSessionContext(), value );
 	}
@@ -143,16 +143,16 @@ public abstract class GeneratedGiftWrap extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>GiftWrap.cost</code> attribute. 
 	 * @param value the cost
 	 */
-	public void setCost(final SessionContext ctx, final int value)
+	public void setCost(final SessionContext ctx, final double value)
 	{
-		setCost( ctx,Integer.valueOf( value ) );
+		setCost( ctx,Double.valueOf( value ) );
 	}
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>GiftWrap.cost</code> attribute. 
 	 * @param value the cost
 	 */
-	public void setCost(final int value)
+	public void setCost(final double value)
 	{
 		setCost( getSession().getSessionContext(), value );
 	}
@@ -242,39 +242,39 @@ public abstract class GeneratedGiftWrap extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>GiftWrap.type</code> attribute.
-	 * @return the type
+	 * <i>Generated method</i> - Getter of the <code>GiftWrap.giftWrapType</code> attribute.
+	 * @return the giftWrapType
 	 */
-	public EnumerationValue getType(final SessionContext ctx)
+	public EnumerationValue getGiftWrapType(final SessionContext ctx)
 	{
-		return (EnumerationValue)getProperty( ctx, TYPE);
+		return (EnumerationValue)getProperty( ctx, GIFTWRAPTYPE);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>GiftWrap.type</code> attribute.
-	 * @return the type
+	 * <i>Generated method</i> - Getter of the <code>GiftWrap.giftWrapType</code> attribute.
+	 * @return the giftWrapType
 	 */
-	public EnumerationValue getType()
+	public EnumerationValue getGiftWrapType()
 	{
-		return getType( getSession().getSessionContext() );
+		return getGiftWrapType( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>GiftWrap.type</code> attribute. 
-	 * @param value the type
+	 * <i>Generated method</i> - Setter of the <code>GiftWrap.giftWrapType</code> attribute. 
+	 * @param value the giftWrapType
 	 */
-	public void setType(final SessionContext ctx, final EnumerationValue value)
+	public void setGiftWrapType(final SessionContext ctx, final EnumerationValue value)
 	{
-		setProperty(ctx, TYPE,value);
+		setProperty(ctx, GIFTWRAPTYPE,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>GiftWrap.type</code> attribute. 
-	 * @param value the type
+	 * <i>Generated method</i> - Setter of the <code>GiftWrap.giftWrapType</code> attribute. 
+	 * @param value the giftWrapType
 	 */
-	public void setType(final EnumerationValue value)
+	public void setGiftWrapType(final EnumerationValue value)
 	{
-		setType( getSession().getSessionContext(), value );
+		setGiftWrapType( getSession().getSessionContext(), value );
 	}
 	
 }

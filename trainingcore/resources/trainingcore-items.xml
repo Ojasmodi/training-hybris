@@ -12,8 +12,8 @@
 			autocreate="true" generate="true" type="list" />
 		<collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum"
 			autocreate="true" generate="true" type="set" />
-<!-- 		<collectiontype code="GiftWrapList" elementtype="GiftWrap" -->
-<!-- 			autocreate="true" generate="true" type="list" /> -->
+		<collectiontype code="GiftWrapList" elementtype="GiftWrap"
+			autocreate="true" generate="true" type="list" />
 	</collectiontypes>
 
 	<enumtypes>
@@ -57,10 +57,11 @@
 			</attributes>
 		</itemtype>
 
-		<itemtype code="GiftWrap" generate="true" autocreate="true">
+		<itemtype code="GiftWrap" generate="true" autocreate="true" 
+		jaloclass="org.training.core.jalo.GiftWrap">
 			<deployment table="GiftWrap" typecode="12000"></deployment>
 			<attributes>
-				<attribute qualifier="type" type="GiftWrapType">
+				<attribute qualifier="giftWrapType" type="GiftWrapType">
 					<description></description>
 					<modifiers />
 					<persistence type="property" />
@@ -70,7 +71,7 @@
 					<modifiers unique="true" optional="false" />
 					<persistence type="property" />
 				</attribute>
-				<attribute qualifier="cost" type="java.lang.Integer">
+				<attribute qualifier="cost" type="java.lang.Double">
 					<description></description>
 					<modifiers />
 					<persistence type="property" />
@@ -83,18 +84,19 @@
 			</attributes>
 		</itemtype>
 
-<!-- 		<itemtype code="GiftWrapComponent" extends="SimpleCMSComponent" -->
-<!-- 			autocreate="true"> -->
-<!-- 			<deployment table="GiftWrapComponent" typecode="12001" /> -->
-<!-- 			<attributes> -->
-<!-- 				<attribute type="GiftWrapList" qualifier="listOfGiftWraps"> -->
-<!-- 					<persistence type="property" /> -->
-<!-- 				</attribute> -->
-<!-- 				<attribute type="Media" qualifier="giftWrapImage"> -->
-<!-- 					<persistence type="property" /> -->
-<!-- 				</attribute> -->
-<!-- 			</attributes> -->
-<!-- 		</itemtype> -->
+		<itemtype code="GiftWrapComponent" extends="SimpleCMSComponent"
+			autocreate="true" generate="true" abstract="false"
+			jaloclass="org.training.core.jalo.GiftWrapComponent">
+			<deployment table="GiftWrapComponent" typecode="12001" />
+			<attributes>
+				<attribute type="GiftWrapList" qualifier="listOfGiftWraps">
+					<persistence type="property" />
+				</attribute>
+				<!-- <attribute type="Media" qualifier="giftWrapImage"> -->
+				<!-- <persistence type="property" /> -->
+				<!-- </attribute> -->
+			</attributes>
+		</itemtype>
 
 
 

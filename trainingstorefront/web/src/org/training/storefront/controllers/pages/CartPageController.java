@@ -143,6 +143,7 @@ public class CartPageController extends AbstractCartPageController
 		LOG.error("Reached");
 		// adding giftwrap model here
 		//addGiftWrapData(model);
+		//model.addAttribute("listOfGiftWraps", component.getListOfGiftWraps());
 		return prepareCartUrl(model);
 	}
 
@@ -175,18 +176,16 @@ public class CartPageController extends AbstractCartPageController
 	{
 		final QuoteData quoteData = getCartFacade().getSessionCart().getQuoteData();
 
-		return quoteData != null
-				? (QuoteState.BUYER_OFFER.equals(quoteData.getState())
-						? Optional.of(String.format(REDIRECT_QUOTE_VIEW_URL, urlEncode(quoteData.getCode())))
-						: Optional.of(String.format(REDIRECT_QUOTE_EDIT_URL, urlEncode(quoteData.getCode()))))
-				: Optional.empty();
+		return quoteData != null ? (QuoteState.BUYER_OFFER.equals(quoteData.getState())
+				? Optional.of(String.format(REDIRECT_QUOTE_VIEW_URL, urlEncode(quoteData.getCode())))
+				: Optional.of(String.format(REDIRECT_QUOTE_EDIT_URL, urlEncode(quoteData.getCode())))) : Optional.empty();
 	}
 
 	/**
-	 * Handle the '/cart/checkout' request url. This method checks to see if the cart is valid before allowing the
-	 * checkout to begin. Note that this method does not require the user to be authenticated and therefore allows us to
-	 * validate that the cart is valid without first forcing the user to login. The cart will be checked again once the
-	 * user has logged in.
+	 * Handle the '/cart/checkout' request url. This method checks to see if the cart is valid before allowing the checkout
+	 * to begin. Note that this method does not require the user to be authenticated and therefore allows us to validate
+	 * that the cart is valid without first forcing the user to login. The cart will be checked again once the user has
+	 * logged in.
 	 *
 	 * @return The page to redirect to
 	 */
@@ -295,8 +294,9 @@ public class CartPageController extends AbstractCartPageController
 		catch (final CommerceCartModificationException e)
 		{
 			LOG.error(e.getMessage(), e);
-			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.ERROR_MESSAGES_HOLDER,
-					"basket.error.entrygroup.remove", new Object[]{groupNumber});
+			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.ERROR_MESSAGES_HOLDER, "basket.error.entrygroup.remove",
+					new Object[]
+					{ groupNumber });
 		}
 		return REDIRECT_CART_URL;
 	}
@@ -382,14 +382,17 @@ public class CartPageController extends AbstractCartPageController
 			// Less than successful
 			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.ERROR_MESSAGES_HOLDER,
 					"basket.page.message.update.reducedNumberOfItemsAdded.lowStock", new Object[]
-					{ XSSFilterUtil.filter(cartModification.getEntry().getProduct().getName()), Long.valueOf(cartModification.getQuantity()), form.getQuantity(), request.getRequestURL().append(cartModification.getEntry().getProduct().getUrl()) });
+					{ XSSFilterUtil.filter(cartModification.getEntry().getProduct().getName()),
+							Long.valueOf(cartModification.getQuantity()), form.getQuantity(),
+							request.getRequestURL().append(cartModification.getEntry().getProduct().getUrl()) });
 		}
 		else
 		{
 			// No more stock available
 			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.ERROR_MESSAGES_HOLDER,
 					"basket.page.message.update.reducedNumberOfItemsAdded.noStock", new Object[]
-					{ XSSFilterUtil.filter(cartModification.getEntry().getProduct().getName()), request.getRequestURL().append(cartModification.getEntry().getProduct().getUrl()) });
+					{ XSSFilterUtil.filter(cartModification.getEntry().getProduct().getName()),
+							request.getRequestURL().append(cartModification.getEntry().getProduct().getUrl()) });
 		}
 	}
 

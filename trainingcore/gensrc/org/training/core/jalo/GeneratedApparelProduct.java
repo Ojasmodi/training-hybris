@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 28 Jan, 2020 2:11:20 PM                     ---
+ * --- Generated at 30 Jan, 2020 12:18:10 PM                    ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;

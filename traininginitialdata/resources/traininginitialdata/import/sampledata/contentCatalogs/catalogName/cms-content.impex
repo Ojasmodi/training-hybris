@@ -392,20 +392,35 @@ INSERT_UPDATE ContentSlotForPage ; $contentCV[unique=true] ; uid[unique=true] ; 
 
 #My impex import                 
                                  
-INSERT_UPDATE CMSParagraphComponent ; $contentCV[unique=true] ; uid[unique=true]     ; name                ; &componentRef        ;  ;  ;  ; content                         
-                                    ;                         ; welcomeInfoComponent ; Welcome information ; welcomeInfoComponent ;  ;  ;  ; "<h1>welcome to home page</h1> "
+#INSERT_UPDATE CMSParagraphComponent ; $contentCV[unique=true] ; uid[unique=true]     ; name                ; &componentRef        ;  ;  ;  ; content                         
+#                                ;                         ; welcomeInfoComponent; Welcome information   ; welcomeInfoComponent                                        ;                                          ;  ;  ; "<h1>welcome to home page</h1> "
 
+
+#INSERT_UPDATE ContentSlotName ; name[unique=true] ; template(uid,$contentCV)[unique=true][default='CartPageTemplate'] ; validComponentTypes(code) ; compTypeGroup(code)
+#                              ; welcomeInfo       ;                                                                   ;                           ; wide               
+
+
+#INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true] ; name              ; active
+#                          ;                         ; welcomeInfoSlot  ; welcome info slot ; true  
+
+
+##INSERT_UPDATE ContentSlotForTemplate ; $contentCV[unique=true] ; uid[unique=true]         ; position[unique=true] ; pageTemplate(uid,$contentCV)[unique=true][default='CartPageTemplate'] ; contentSlot(uid,$contentCV)[unique=true] ; allowOverwrite
+#                                     ;                         ; WelcomeInfo-CartPage     ; welcomeInfo           ;                                                                       ; welcomeInfoSlot                          ; true          
+
+#INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true] ; cmsComponents(uid,$contentCV)
+#                                
+#                                ;                         ; welcomeInfoSlot  ; welcomeInfoComponent  
+                                 
+INSERT_UPDATE GiftWrapComponent ; $contentCV[unique=true] ; uid[unique=true]  ; name                ; &componentRef     ; listOfGiftWraps(code)    
+                                ;                         ; giftWrapComponent ; Gift Wrap Component ; giftWrapComponent ; 7,8,9
 
 INSERT_UPDATE ContentSlotName ; name[unique=true] ; template(uid,$contentCV)[unique=true][default='CartPageTemplate'] ; validComponentTypes(code) ; compTypeGroup(code)
-                              ; welcomeInfo       ;                                                                   ;                           ; wide               
+                              ; giftWrapSlotName  ;                                                                   ; GiftWrapComponent         
 
+INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true]    ; name           ; active ; cmsComponents(&componentRef)
+                          ;                         ; giftWrapContentSlot ; Gift Wrap slot ; true   ; giftWrapComponent           
 
-INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true] ; name              ; active
-                          ;                         ; welcomeInfoSlot  ; welcome info slot ; true  
+INSERT_UPDATE ContentSlotForTemplate ; $contentCV[unique=true] ; uid[unique=true]  ; position[unique=true] ; pageTemplate(uid,$contentCV)[unique=true][default='CartPageTemplate'] ; contentSlot(uid,$contentCV)[unique=true]
+                                     ;                         ; giftWrap-CartPage ; giftWrapSlotName      ;                                                                       ; giftWrapContentSlot                                                   
 
-
-INSERT_UPDATE ContentSlotForTemplate ; $contentCV[unique=true] ; uid[unique=true]         ; position[unique=true] ; pageTemplate(uid,$contentCV)[unique=true][default='CartPageTemplate'] ; contentSlot(uid,$contentCV)[unique=true] ; allowOverwrite
-                                     ;                         ; WelcomeInfo-CartPage     ; welcomeInfo           ;                                                                       ; welcomeInfoSlot                          ; true          
-
-INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true] ; cmsComponents(uid,$contentCV)
-                          ;                         ; welcomeInfoSlot  ; welcomeInfoComponent         
+                                     

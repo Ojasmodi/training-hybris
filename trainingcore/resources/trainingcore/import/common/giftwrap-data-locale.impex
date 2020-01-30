@@ -1,4 +1,8 @@
-INSERT_UPDATE GiftWrap;code[unique=true];type(code);cost
-;7;STANDARD;50
-;8;STANDARD;60
-;9;PREMIUM;60 
+#$contentCatalog=apparel-ukContentCatalog 
+#$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+
+INSERT_UPDATE GiftWrap ; code[unique=true] ; giftWrapType(code) ; cost
+                       ; 7                 ; STANDARD           ; 50  
+                       ; 8                 ; STANDARD           ; 60  
+                       ; 9                 ; PREMIUM            ; 60  

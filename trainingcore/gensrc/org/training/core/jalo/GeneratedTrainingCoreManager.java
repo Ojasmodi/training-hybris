@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 28 Jan, 2020 2:11:20 PM                     ---
+ * --- Generated at 30 Jan, 2020 12:18:10 PM                    ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -25,6 +25,7 @@ import org.training.core.jalo.ApparelSizeVariantProduct;
 import org.training.core.jalo.ApparelStyleVariantProduct;
 import org.training.core.jalo.ElectronicsColorVariantProduct;
 import org.training.core.jalo.GiftWrap;
+import org.training.core.jalo.GiftWrapComponent;
 
 /**
  * Generated class for type <code>TrainingCoreManager</code>.
@@ -181,6 +182,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public GiftWrap createGiftWrap(final Map attributeValues)
 	{
 		return createGiftWrap( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public GiftWrapComponent createGiftWrapComponent(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.GIFTWRAPCOMPONENT );
+			return (GiftWrapComponent)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating GiftWrapComponent : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public GiftWrapComponent createGiftWrapComponent(final Map attributeValues)
+	{
+		return createGiftWrapComponent( getSession().getSessionContext(), attributeValues );
 	}
 	
 	@Override

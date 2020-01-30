@@ -35,7 +35,7 @@ public class DefaultGiftWrapServiceUnitTest
 
 	private static final String GIFT_WRAP_CODE = "6";
 
-	private static final Integer GIFT_WRAP_COST = 56;
+	private static final Double GIFT_WRAP_COST = 56.0;
 
 	private static final String GIFT_WRAP_DESCRIPTION = "All female rock giftWrap formed in Munich in the late 1990s";
 
@@ -53,7 +53,7 @@ public class DefaultGiftWrapServiceUnitTest
 		// This instance of a GiftWrapModel will be used by the tests
 		giftWrapModel = new GiftWrapModel();
 		giftWrapModel.setCode(GIFT_WRAP_CODE);
-		giftWrapModel.setType(GIFT_WRAP_TYPE);
+		giftWrapModel.setGiftWrapType(GIFT_WRAP_TYPE);
 		giftWrapModel.setDescription(GIFT_WRAP_DESCRIPTION);
 		giftWrapModel.setCost(GIFT_WRAP_COST);
 	}

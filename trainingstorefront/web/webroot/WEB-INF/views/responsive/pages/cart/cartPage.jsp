@@ -8,10 +8,18 @@
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags"%>
 
 <style>
-.welcomeInfo {
-	font-weight: bold;
-	margin-right: 5px;
-	color: #0000ff;
+
+
+.offers_list {
+	margin: 20px 0;
+	padding: 5px;
+	border: 1px dotted #000;
+}
+
+.offers_list_element {
+	vertical-align: top;
+	border-bottom: 1px dotted #a5a5a5;
+	padding: 20px 0 0 0;
 }
 </style>
 <spring:htmlEscape defaultHtmlEscape="true" />
@@ -43,11 +51,22 @@
 
 	<!--  	   My custom component -->
 
-	<div class="welcomeInfo">
-		<cms:pageSlot position="welcomeInfo" var="feature">
+	<%--  <div class="welcomeInfo">
+		<cms:pageSlot position="giftWrapSlotName" var="feature">
 			<cms:component component="${feature}" element="div" />
 		</cms:pageSlot>
-	</div>
+	</div> --%> 
+	
+<!-- 	<div class="customOffersComponent"> -->
+<%-- 		<cms:pageSlot position="giftWrapSlotName" var="feature"> --%>
+<%-- 			<cart:giftwrap component="${feature}" element="div" /> --%>
+<%-- 		</cms:pageSlot> --%>
+<!-- 	</div> -->
+
+	<cms:pageSlot position="giftWrapSlotName" var="component">
+		<cms:component component="${component}"/>
+	</cms:pageSlot> 
+	 
 
 	<!--    End of my custom component -->
 

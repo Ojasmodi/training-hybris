@@ -42,7 +42,7 @@ public class DefaultGiftWrapServiceIntegrationTest extends ServicelayerTest
 
 	private static final String GIFT_WRAP_CODE = "7";
 
-	private static final Integer GIFT_WRAP_COST = 56;
+	private static final Double GIFT_WRAP_COST = 56.0;
 
 	private static final String GIFT_WRAP_DESCRIPTION = "All female rock band formed in Munich in the late 1990s";
 
@@ -76,7 +76,7 @@ public class DefaultGiftWrapServiceIntegrationTest extends ServicelayerTest
 	{
 		giftWrapModel = modelService.create(GiftWrapModel.class);
 		giftWrapModel.setCode(GIFT_WRAP_CODE);
-		giftWrapModel.setType(GIFT_WRAP_TYPE);
+		giftWrapModel.setGiftWrapType(GIFT_WRAP_TYPE);
 		giftWrapModel.setDescription(GIFT_WRAP_DESCRIPTION);
 		giftWrapModel.setCost(GIFT_WRAP_COST);
 		modelService.save(giftWrapModel);

@@ -37,7 +37,7 @@ public class DefaultGiftWrapDAOIntegrationTest extends ServicelayerTransactional
 	@Resource
 	private ModelService modelService;
 	private static final String GIFT_WRAP_CODE = "6";
-	private static final Integer GIFT_WRAP_COST = 56;
+	private static final Double GIFT_WRAP_COST = 56.0;
 	private static final String GIFT_WRAP_DESCRIPTION = "All female rock band formed in Munich in the late 1990s";
 	private static final GiftWrapType GIFT_WRAP_TYPE = GiftWrapType.PREMIUM;
 
@@ -65,7 +65,7 @@ public class DefaultGiftWrapDAOIntegrationTest extends ServicelayerTransactional
 
 		final GiftWrapModel giftWrapModel = modelService.create(GiftWrapModel.class);
 		giftWrapModel.setCode(GIFT_WRAP_CODE);
-		giftWrapModel.setType(GIFT_WRAP_TYPE);
+		giftWrapModel.setGiftWrapType(GIFT_WRAP_TYPE);
 		giftWrapModel.setDescription(GIFT_WRAP_DESCRIPTION);
 		giftWrapModel.setCost(GIFT_WRAP_COST);
 		modelService.save(giftWrapModel);
