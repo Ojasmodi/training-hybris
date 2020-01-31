@@ -2,6 +2,6 @@
 $lang=en
 
 INSERT_UPDATE GiftWrap ; code[unique=true] ; description[lang=$lang]                                       
-                       ; 7                 ; Occasional tribute rock band                                  
-                       ; 8                 ; Dutch tribute rock band formed in 2013                        
-                       ; 9                 ; experimental Jazz group from London playing many musical notes
+                       ; 7                 ; Best gift wrap in the market                                 
+                       ; 8                 ; Budget friendly giftwrap                        
+                       ; 9                 ; New in the market

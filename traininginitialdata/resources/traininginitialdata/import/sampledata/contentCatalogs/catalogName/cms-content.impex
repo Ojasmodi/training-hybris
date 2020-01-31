@@ -27,6 +27,11 @@ $siteResource=jar:org.training.initialdata.setup.InitialDataSystemSetup&/trainin
 $productResource=jar:org.training.initialdata.setup.InitialDataSystemSetup&/traininginitialdata/import/productCatalogs/$productCatalog
 $jarResourceCms=jar:org.training.initialdata.setup.InitialDataSystemSetup&/traininginitialdata/import/cockpits/cmscockpit
 
+# for uploading images	
+$mediaResource=jar:de.hybris.platform.apparelstore.constants.ApparelstoreConstants&/apparelstore/import/sampledata/contentCatalogs/$contentCatalog 
+ 
+
+
 
 # CMS Site Settings
 UPDATE CMSSite ; uid[unique=true] ; defaultPreviewCategory(code, $productCV) ; defaultPreviewProduct(code, $productCV)
@@ -411,16 +416,48 @@ INSERT_UPDATE ContentSlotForPage ; $contentCV[unique=true] ; uid[unique=true] ; 
 #                                
 #                                ;                         ; welcomeInfoSlot  ; welcomeInfoComponent  
                                  
-INSERT_UPDATE GiftWrapComponent ; $contentCV[unique=true] ; uid[unique=true]  ; name                ; &componentRef     ; listOfGiftWraps(code)    
-                                ;                         ; giftWrapComponent ; Gift Wrap Component ; giftWrapComponent ; 7,8,9
+                              
+INSERT_UPDATE PageTemplate ; $contentCV[unique=true] ; uid[unique=true]     ; name                    ; frontendTemplateName        ; restrictedPageTypes(code) ; active[default=true]
+                           ;                         ; GiftWrapPageTemplate ; Gift Wrap Page Template ; giftwrap/giftWrapLayoutPage ; ContentPage               
 
-INSERT_UPDATE ContentSlotName ; name[unique=true] ; template(uid,$contentCV)[unique=true][default='CartPageTemplate'] ; validComponentTypes(code) ; compTypeGroup(code)
-                              ; giftWrapSlotName  ;                                                                   ; GiftWrapComponent         
+                         
+INSERT_UPDATE ContentPage ; $contentCV[unique=true] ; uid[unique=true]    ; name                   ; masterTemplate(uid,$contentCV) ; label           ; defaultPage[default='true'] ; approvalStatus(code)[default='approved'] ; homepage[default='false']
+                          ;                         ; giftWrapContentPage ; Gift Wrap Content Page ; GiftWrapPageTemplate           ; /giftWrapCMSPage
 
-INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true]    ; name           ; active ; cmsComponents(&componentRef)
-                          ;                         ; giftWrapContentSlot ; Gift Wrap slot ; true   ; giftWrapComponent           
+                                 
+INSERT_UPDATE Media ; $contentCV[unique=true] ; code[unique=true] ; @media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator] ; mime[default='image/png'] ; folder(qualifier)[default='images'] ; altText   
+                    ;                         ; giftWrapMedia1    ; $mediaResource/images/gift_wrap/gift.png                                              ;                           ;                                     ; "STANDARD"
+                                  
+INSERT_UPDATE GiftWrapComponent ; $contentCV[unique=true] ; uid[unique=true]  ; name                ; listOfGiftWraps(code) ; giftWrapImage(code)
+                                ;                         ; giftWrapComponent ; Gift Wrap Component ; 7,8,9                 ; giftWrapMedia1     
 
-INSERT_UPDATE ContentSlotForTemplate ; $contentCV[unique=true] ; uid[unique=true]  ; position[unique=true] ; pageTemplate(uid,$contentCV)[unique=true][default='CartPageTemplate'] ; contentSlot(uid,$contentCV)[unique=true]
-                                     ;                         ; giftWrap-CartPage ; giftWrapSlotName      ;                                                                       ; giftWrapContentSlot                                                   
+                                  
+INSERT_UPDATE ContentSlotName ; name[unique=true] ; template(uid,$contentCV)[unique=true][default='GiftWrapPageTemplate'] ; validComponentTypes(code) ; compTypeGroup(code)
+                              ; SiteLogo          ;                                                                       ;                           ; logo               
+                              ; HeaderLinks       ;                                                                       ;                           ; headerlinks        
+                              ; SearchBox         ;                                                                       ;                           ; searchbox          
+                              ; MiniCart          ;                                                                       ;                           ; minicart           
+                              ; NavigationBar     ;                                                                       ;                           ; navigation         
+                              ; Footer            ;                                                                       ;                           ; footer             
+                              ; giftWrapSlotName  ;                                                                       ;                           ; wide               
 
+                                  
+INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true]        ; name                        ; active ; cmsComponents(uid,$contentCV)
+                          ;                         ; giftWrapTypeContentSlot ; Gift Wrap Type Content Slot ; true   ; giftWrapComponent            
+
+                       
+INSERT_UPDATE ContentSlotForTemplate ; $contentCV[unique=true] ; uid[unique=true]           ; position[unique=true] ; pageTemplate(uid,$contentCV)[unique=true][default='GiftWrapPageTemplate'] ; contentSlot(uid,$contentCV)[unique=true] ; allowOverwrite
+                                     ;                         ; SiteLogo-GiftWrapPage      ; SiteLogo              ;                                                                           ; SiteLogoSlot                             ; true          
+                                     ;                         ; NavigationBar-GiftWrapPage ; NavigationBar         ;                                                                           ; NavigationBarSlot                        ; true          
+                                     ;                         ; MiniCart-GiftWrapPage      ; MiniCart              ;                                                                           ; MiniCartSlot                             ; true          
+                                     ;                         ; Footer-GiftWrapPage        ; Footer                ;                                                                           ; FooterSlot                               ; true          
+                                     ;                         ; HeaderLinks-GiftWrapPage   ; HeaderLinks           ;                                                                           ; HeaderLinksSlot                          ; true          
+                                     ;                         ; SearchBox-GiftWrapPage     ; SearchBox             ;                                                                           ; SearchBoxSlot                            ; true          
+                                     ;                         ; giftWrap-GiftWrapPage      ; giftWrapSlotName      ;                                                                           ; giftWrapTypeContentSlot                  ; true          
+
+
+
+
+                                     
+                                     
                                      

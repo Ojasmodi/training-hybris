@@ -57,8 +57,8 @@
 			</attributes>
 		</itemtype>
 
-		<itemtype code="GiftWrap" generate="true" autocreate="true" 
-		jaloclass="org.training.core.jalo.GiftWrap">
+		<itemtype code="GiftWrap" generate="true" autocreate="true"
+			jaloclass="org.training.core.jalo.GiftWrap">
 			<deployment table="GiftWrap" typecode="12000"></deployment>
 			<attributes>
 				<attribute qualifier="giftWrapType" type="GiftWrapType">
@@ -92,9 +92,9 @@
 				<attribute type="GiftWrapList" qualifier="listOfGiftWraps">
 					<persistence type="property" />
 				</attribute>
-				<!-- <attribute type="Media" qualifier="giftWrapImage"> -->
-				<!-- <persistence type="property" /> -->
-				<!-- </attribute> -->
+				<attribute type="Media" qualifier="giftWrapImage">
+					<persistence type="property" />
+				</attribute>
 			</attributes>
 		</itemtype>
 
