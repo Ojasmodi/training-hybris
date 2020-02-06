@@ -11,15 +11,7 @@
 	
 	<cms:pageSlot position="giftWrapSlotName" var="component">
 		<cms:component component="${component}"/>
-	</cms:pageSlot> 
-	
-	
-	
-	<%-- <cms:pageSlot position="giftWrapSlotName" var="feature"
-		element="div">
-		<cms:component component="${feature}" />
-	</cms:pageSlot> --%>
-	
+	</cms:pageSlot> 	
 	
 </template:page> 
  

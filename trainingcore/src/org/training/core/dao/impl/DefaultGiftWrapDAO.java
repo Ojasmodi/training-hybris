@@ -31,7 +31,7 @@ public class DefaultGiftWrapDAO implements GiftWrapDAO
 	@Override
 	public List<GiftWrapModel> getAllGiftWraps()
 	{
-		final String queryString = "SELECT {pk} FROM {" + GiftWrapModel._TYPECODE + "}";
+		final String queryString = "SELECT {pk} FROM {" + GiftWrapModel._TYPECODE + "}"; // correct way of writing query
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 		return flexibleSearchService.<GiftWrapModel> search(query).getResult();
 	}
@@ -43,16 +43,12 @@ public class DefaultGiftWrapDAO implements GiftWrapDAO
 
 		// here {GiftWrap} is the itemType defined in xml file
 		final String queryString = //
-				"SELECT {pk} FROM {GiftWrap} WHERE {TYPE} = ?type ";
+				"SELECT {pk} FROM {GiftWrap} WHERE {TYPE} = ?type "; // wrong way of writing query
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 		query.addQueryParameter("type", wrapType);
 		return flexibleSearchService.<GiftWrapModel> search(query).getResult();
 
 	}
 
-	//	public void setFlexibleSearchService(final FlexibleSearchService flexibleSearchService)
-	//	{
-	//		this.flexibleSearchService = flexibleSearchService;
-	//	}
 
 }

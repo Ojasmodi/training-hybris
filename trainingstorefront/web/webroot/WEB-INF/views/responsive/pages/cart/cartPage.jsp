@@ -50,22 +50,10 @@
 	</div>
 
 	<!--  	   My custom component -->
-
-	<%--  <div class="welcomeInfo">
-		<cms:pageSlot position="giftWrapSlotName" var="feature">
-			<cms:component component="${feature}" element="div" />
-		</cms:pageSlot>
-	</div> --%> 
-	
-<!-- 	<div class="customOffersComponent"> -->
-<%-- 		<cms:pageSlot position="giftWrapSlotName" var="feature"> --%>
-<%-- 			<cart:giftwrap component="${feature}" element="div" /> --%>
-<%-- 		</cms:pageSlot> --%>
-<!-- 	</div> -->
-
-	<cms:pageSlot position="giftWrapSlotName" var="component">
-		<cms:component component="${component}"/>
-	</cms:pageSlot> 
+<!--            shifted to a new custom content page -->
+<%-- 	<cms:pageSlot position="giftWrapSlotName" var="component"> --%>
+<%-- 		<cms:component component="${component}"/> --%>
+<%-- 	</cms:pageSlot>  --%>
 	 
 
 	<!--    End of my custom component -->

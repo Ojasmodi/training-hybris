@@ -22,7 +22,7 @@ public class DefaultGiftWrapService implements GiftWrapService
 {
 
 	@Autowired
-	GiftWrapDAO giftWrapDAO;
+	private GiftWrapDAO giftWrapDAO;
 
 	@Override
 	public List<GiftWrapModel> getAllGiftWraps()

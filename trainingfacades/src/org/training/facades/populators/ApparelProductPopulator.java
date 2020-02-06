@@ -17,14 +17,14 @@ import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 import de.hybris.platform.variants.model.VariantProductModel;
-import org.training.core.model.ApparelProductModel;
-import org.training.facades.product.data.GenderData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Required;
+import org.training.core.model.ApparelProductModel;
+import org.training.facades.product.data.GenderData;
 
 
 /**
@@ -62,6 +62,9 @@ public class ApparelProductPopulator implements Populator<ProductModel, ProductD
 				}
 				target.setGenders(genders);
 			}
+
+			// adding giftWrapAvailable for ProductData
+			target.setGiftWrapAvailable(apparelProductModel.getGiftWrapAvailable());
 		}
 	}
 
