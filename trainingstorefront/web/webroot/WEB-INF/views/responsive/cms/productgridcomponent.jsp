@@ -9,6 +9,7 @@
 
 <div class="product__listing product__grid">
     <c:forEach items="${searchPageData.results}" var="product" varStatus="status">
+        <%-- ${product.giftWrapAvailable} --%>
         <product:productListerGridItem product="${product}" />
     </c:forEach>
 </div>

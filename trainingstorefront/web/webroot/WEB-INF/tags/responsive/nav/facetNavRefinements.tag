@@ -8,7 +8,9 @@
 
 
 <c:forEach items="${pageData.facets}" var="facet">
+<%-- ${facet.name} --%>
 	<c:choose>
+	
 		<c:when test="${facet.code eq 'availableInStores'}">
 			<nav:facetNavRefinementStoresFacet facetData="${facet}" userLocation="${userLocation}"/>
 		</c:when>

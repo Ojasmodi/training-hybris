@@ -120,7 +120,7 @@ public class AbstractCategoryPageController extends AbstractSearchPageController
 
 		final boolean showCategoriesOnly = categorySearch.isShowCategoriesOnly();
 
-		storeCmsPageInModel(model, categorySearch.getCategoryPage());
+		storeCmsPageInModel(model, categorySearch.getCategoryPage());/// here we are setting cms page to category page model
 		storeContinueUrl(request);
 
 		populateModel(model, searchPageData, showMode);

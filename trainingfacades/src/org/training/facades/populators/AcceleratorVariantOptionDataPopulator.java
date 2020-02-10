@@ -50,7 +50,8 @@ public class AcceleratorVariantOptionDataPopulator extends VariantOptionDataPopu
 			final ComposedTypeModel productType = getTypeService().getComposedTypeForClass(source.getClass());
 			for (final VariantOptionQualifierData variantOptionQualifier : target.getVariantOptionQualifiers())
 			{
-				final MediaModel media = getMediaWithImageFormat(mediaContainer, lookupImageFormat(productType, variantOptionQualifier.getQualifier()));
+				final MediaModel media = getMediaWithImageFormat(mediaContainer,
+						lookupImageFormat(productType, variantOptionQualifier.getQualifier()));
 				if (media != null)
 				{
 					variantOptionQualifier.setImage(getImageConverter().convert(media));

@@ -7,7 +7,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
-
 <c:if test="${not empty pageData.breadcrumbs}">
 
 	<div class="facet js-facet">

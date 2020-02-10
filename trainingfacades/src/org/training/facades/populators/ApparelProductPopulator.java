@@ -62,7 +62,7 @@ public class ApparelProductPopulator implements Populator<ProductModel, ProductD
 				}
 				target.setGenders(genders);
 			}
-
+			
 			// adding giftWrapAvailable for ProductData
 			target.setGiftWrapAvailable(apparelProductModel.getGiftWrapAvailable());
 		}

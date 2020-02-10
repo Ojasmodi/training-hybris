@@ -51,7 +51,7 @@
 			<attributes>
 				<attribute qualifier="giftWrapAvailable" type="java.lang.Boolean">
 					<description></description>
-					<modifiers />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
 					<persistence type="property" />
 				</attribute>
 			</attributes>

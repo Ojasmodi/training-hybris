@@ -8,7 +8,6 @@
 	<div id="globalMessages">
 		<common:globalMessages />
 	</div>
-	
 	<cms:pageSlot position="giftWrapSlotName" var="component">
 		<cms:component component="${component}"/>
 	</cms:pageSlot> 	
