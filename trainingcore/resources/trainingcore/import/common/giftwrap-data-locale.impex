@@ -1,8 +1,13 @@
-#$contentCatalog=apparel-ukContentCatalog 
-#$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$contentCatalog=apparel-ukContentCatalog 
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 
+# for uploading images	
+$mediaResource=jar:de.hybris.platform.apparelstore.constants.ApparelstoreConstants&/apparelstore/import/sampledata/contentCatalogs/$contentCatalog 
 
-INSERT_UPDATE GiftWrap ; code[unique=true] ; giftWrapType(code) ; cost
-                       ; 7                 ; STANDARD           ; 50  
-                       ; 8                 ; STANDARD           ; 60  
-                       ; 9                 ; PREMIUM            ; 60  
+INSERT_UPDATE GiftWrap ; code[unique=true] ; giftWrapType(code) ; cost ; giftWrapImage(code)
+                       ; 8                 ; STANDARD           ; 60   ; standardmedia      
+                       ; 9                 ; PREMIUM            ; 60   ; premiummedia       
+                                                   
+INSERT_UPDATE Media ; $contentCV[unique=true] ; code[unique=true] ; @media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator] ; mime[default='image/png'] ; folder(qualifier)[default='images'] ; altText   
+                    ;                         ; standardmedia     ; $mediaResource/images/gift_wrap/standard.png                                   ;                           ;                                     ; "STANDARD"
+                    ;                         ; premiummedia      ; $mediaResource/images/gift_wrap/premium.png                                   ;                           ;                                     ; "PREMIUM"

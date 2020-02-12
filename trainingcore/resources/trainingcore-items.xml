@@ -81,6 +81,9 @@
 					<modifiers />
 					<persistence type="property" />
 				</attribute>
+				<attribute type="Media" qualifier="giftWrapImage">
+					<persistence type="property" />
+				</attribute>
 			</attributes>
 		</itemtype>
 
@@ -92,9 +95,9 @@
 				<attribute type="GiftWrapList" qualifier="listOfGiftWraps">
 					<persistence type="property" />
 				</attribute>
-				<attribute type="Media" qualifier="giftWrapImage">
-					<persistence type="property" />
-				</attribute>
+<!-- 				<attribute type="Media" qualifier="giftWrapImage"> -->
+<!-- 					<persistence type="property" /> -->
+<!-- 				</attribute> -->
 			</attributes>
 		</itemtype>
 

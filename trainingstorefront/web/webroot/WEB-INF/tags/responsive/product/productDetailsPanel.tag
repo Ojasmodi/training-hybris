@@ -32,7 +32,7 @@
 
 						<ycommerce:testId
 							code="productDetails_productNamePrice_label_${product.code}">
-				            GiftWrap Available : ${product.giftWrapAvailable}
+				            <b>GiftWrap Available :</b> ${product.giftWrapAvailable}
 						</ycommerce:testId>
 
 						<div class="description">${ycommerce:sanitizeHTML(product.summary)}</div>

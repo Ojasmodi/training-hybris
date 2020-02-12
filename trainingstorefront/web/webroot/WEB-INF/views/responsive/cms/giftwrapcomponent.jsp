@@ -24,7 +24,9 @@
 				<th>${giftWrap.description}</th>
 				<th>${giftWrap.cost}</th>
 				<th>${giftWrap.giftWrapType}</th>
-				<th><img src="${giftWrapImage.url}" height="150px"
+				<%-- 				<th><img src="${giftWrapImage.url}" height="150px" --%>
+				<!-- 					width="150px"></th> -->
+				<th><img src="${giftWrap.giftWrapImage.url}" height="150px"
 					width="150px"></th>
 			</tr>
 		</c:forEach>

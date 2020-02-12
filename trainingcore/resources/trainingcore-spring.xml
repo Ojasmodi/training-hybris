@@ -596,10 +596,9 @@
 
 	<!-- Our defined beans -->
 	<bean id="defaultGiftWrapService" class="org.training.core.services.impl.DefaultGiftWrapService">
-<!-- 		<property name="giftWrapDAOImpl" ref="giftWrapDAOImpl" /> -->
+		<!-- <property name="giftWrapDAOImpl" ref="giftWrapDAOImpl" /> -->
 	</bean>
 
-	<!-- <bean id="giftWrapDAOImpl" class="org.training.core.dao.impl.GiftWrapDAOImpl">
-		<property name="flexibleSearchService" ref="flexibleSearchService" />
-	</bean>  -->
+	<!-- <bean id="giftWrapDAOImpl" class="org.training.core.dao.impl.GiftWrapDAOImpl"> 
+		<property name="flexibleSearchService" ref="flexibleSearchService" /> </bean> -->
 </beans>
