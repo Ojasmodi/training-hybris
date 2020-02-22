@@ -100,6 +100,16 @@
 <!-- 				</attribute> -->
 			</attributes>
 		</itemtype>
+		
+		
+		<itemtype code="AbstractOrderEntry" autocreate="false" generate="false">
+			<attributes>
+				<attribute qualifier="giftWrap" type="GiftWrap">
+					<description>Gift Wrap for Order Entry</description>
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
 
 
 

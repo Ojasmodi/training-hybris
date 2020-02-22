@@ -86,7 +86,7 @@ public class DefaultGiftWrapServiceIntegrationTest extends ServicelayerTest
 
 		giftWrapModels = defaultGiftWrapService.getAllGiftWraps();
 		assertEquals("Unexpected giftWrap found", giftWrapModel, giftWrapModels.get(giftWrapModels.size() - 1));
-		final GiftWrapModel persistedGiftWrapModel = defaultGiftWrapService.getGiftWrapsByGiftWrapType(GIFT_WRAP_TYPE).get(0);
+		final GiftWrapModel persistedGiftWrapModel = defaultGiftWrapService.getGiftWrapByGiftWrapType(GIFT_WRAP_TYPE);
 		assertNotNull("No giftWrap found", persistedGiftWrapModel);
 		assertEquals("Different giftWrap found", giftWrapModel, persistedGiftWrapModel);
 	}

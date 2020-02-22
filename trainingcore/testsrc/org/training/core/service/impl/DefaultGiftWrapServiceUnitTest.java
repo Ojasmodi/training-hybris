@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 import de.hybris.bootstrap.annotations.UnitTest;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.Before;
@@ -83,9 +82,9 @@ public class DefaultGiftWrapServiceUnitTest
 	{
 
 		// Tell Mockito we expect a call to the DAO's getGiftWrap(), and, if it occurs, Mockito should return GiftWrapModel instance
-		when(giftWrapDAO.getGiftWrapsByGiftWrapType(GIFT_WRAP_TYPE)).thenReturn(Collections.singletonList(giftWrapModel));
+		when(giftWrapDAO.getGiftWrapByGiftWrapType(GIFT_WRAP_TYPE)).thenReturn(giftWrapModel);
 		// We make the call to the Service's getGiftWrapForCode() which we expect to call the DAO's findGiftWrapsByCode()
-		final GiftWrapModel result = giftWrapService.getGiftWrapsByGiftWrapType(GIFT_WRAP_TYPE).get(0);
+		final GiftWrapModel result = giftWrapService.getGiftWrapByGiftWrapType(GIFT_WRAP_TYPE);
 		// We then verify that the result returned from the Service is the same as that returned from the DAO
 		assertEquals("GiftWrap should equals() what the mock returned", giftWrapModel, result);
 	}

@@ -59,7 +59,7 @@ public class DefaultGiftWrapDAOIntegrationTest extends ServicelayerTransactional
 	public void giftWrapDAOTest()
 	{
 
-		List<GiftWrapModel> giftWrapByType;
+		GiftWrapModel giftWrapByType;
 		List<GiftWrapModel> allGiftWraps = giftWrapDAO.getAllGiftWraps();
 		final int size = allGiftWraps.size();
 
@@ -74,8 +74,8 @@ public class DefaultGiftWrapDAOIntegrationTest extends ServicelayerTransactional
 		Assert.assertEquals(size + 1, allGiftWraps.size());
 		Assert.assertTrue("giftwrap found", allGiftWraps.contains(giftWrapModel));
 
-		giftWrapByType = giftWrapDAO.getGiftWrapsByGiftWrapType(GIFT_WRAP_TYPE);
-		Assert.assertEquals("Did not find the GIFTWRAP we just saved", 1, giftWrapByType.size());
+		giftWrapByType = giftWrapDAO.getGiftWrapByGiftWrapType(GIFT_WRAP_TYPE);
+		Assert.assertEquals("Did not find the GIFTWRAP we just saved", 1, giftWrapByType);
 
 	}
 
@@ -83,7 +83,7 @@ public class DefaultGiftWrapDAOIntegrationTest extends ServicelayerTransactional
 	@Test(expected = IllegalArgumentException.class)
 	public void testfindBands_NullParam()
 	{
-		giftWrapDAO.getGiftWrapsByGiftWrapType(null); //method's return value not captured
+		giftWrapDAO.getGiftWrapByGiftWrapType(null); //method's return value not captured
 	}
 
 

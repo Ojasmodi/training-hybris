@@ -18,5 +18,5 @@ public interface GiftWrapDAO
 
 	public List<GiftWrapModel> getAllGiftWraps();
 
-	public List<GiftWrapModel> getGiftWrapsByGiftWrapType(GiftWrapType wrapType);
+	public GiftWrapModel getGiftWrapByGiftWrapType(GiftWrapType wrapType);
 }

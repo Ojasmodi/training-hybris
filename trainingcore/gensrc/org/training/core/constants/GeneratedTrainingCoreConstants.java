@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 10 Feb, 2020 1:32:15 PM                     ---
+ * --- Generated at 21 Feb, 2020 12:11:03 PM                    ---
  * ----------------------------------------------------------------
  */
 package org.training.core.constants;
@@ -27,6 +27,10 @@ public class GeneratedTrainingCoreConstants
 	}
 	public static class Attributes
 	{
+		public static class AbstractOrderEntry
+		{
+			public static final String GIFTWRAP = "giftWrap".intern();
+		}
 		public static class Product
 		{
 			public static final String GIFTWRAPAVAILABLE = "giftWrapAvailable".intern();

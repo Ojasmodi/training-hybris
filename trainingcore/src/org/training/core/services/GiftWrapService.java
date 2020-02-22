@@ -18,6 +18,6 @@ public interface GiftWrapService
 
 	public List<GiftWrapModel> getAllGiftWraps();
 
-	public List<GiftWrapModel> getGiftWrapsByGiftWrapType(GiftWrapType wrapType);
+	public GiftWrapModel getGiftWrapByGiftWrapType(GiftWrapType wrapType);
 
 }

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 10 Feb, 2020 1:32:15 PM                     ---
+ * --- Generated at 21 Feb, 2020 12:11:03 PM                    ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -13,6 +13,7 @@ import de.hybris.platform.jalo.JaloBusinessException;
 import de.hybris.platform.jalo.JaloSystemException;
 import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.extension.Extension;
+import de.hybris.platform.jalo.order.AbstractOrderEntry;
 import de.hybris.platform.jalo.product.Product;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.JaloGenericCreationException;
@@ -40,6 +41,9 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 		Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
 		tmp.put("giftWrapAvailable", AttributeMode.INITIAL);
 		ttmp.put("de.hybris.platform.jalo.product.Product", Collections.unmodifiableMap(tmp));
+		tmp = new HashMap<String, AttributeMode>();
+		tmp.put("giftWrap", AttributeMode.INITIAL);
+		ttmp.put("de.hybris.platform.jalo.order.AbstractOrderEntry", Collections.unmodifiableMap(tmp));
 		DEFAULT_INITIAL_ATTRIBUTES = ttmp;
 	}
 	@Override
@@ -214,6 +218,42 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public String getName()
 	{
 		return TrainingCoreConstants.EXTENSIONNAME;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>AbstractOrderEntry.giftWrap</code> attribute.
+	 * @return the giftWrap - Gift Wrap for Order Entry
+	 */
+	public GiftWrap getGiftWrap(final SessionContext ctx, final AbstractOrderEntry item)
+	{
+		return (GiftWrap)item.getProperty( ctx, TrainingCoreConstants.Attributes.AbstractOrderEntry.GIFTWRAP);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>AbstractOrderEntry.giftWrap</code> attribute.
+	 * @return the giftWrap - Gift Wrap for Order Entry
+	 */
+	public GiftWrap getGiftWrap(final AbstractOrderEntry item)
+	{
+		return getGiftWrap( getSession().getSessionContext(), item );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>AbstractOrderEntry.giftWrap</code> attribute. 
+	 * @param value the giftWrap - Gift Wrap for Order Entry
+	 */
+	public void setGiftWrap(final SessionContext ctx, final AbstractOrderEntry item, final GiftWrap value)
+	{
+		item.setProperty(ctx, TrainingCoreConstants.Attributes.AbstractOrderEntry.GIFTWRAP,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>AbstractOrderEntry.giftWrap</code> attribute. 
+	 * @param value the giftWrap - Gift Wrap for Order Entry
+	 */
+	public void setGiftWrap(final AbstractOrderEntry item, final GiftWrap value)
+	{
+		setGiftWrap( getSession().getSessionContext(), item, value );
 	}
 	
 	/**

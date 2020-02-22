@@ -4,6 +4,7 @@
 
 
 <div class="container">
+
     <c:url value="/giftwrap/add" var="addGiftWrap"/>
 
 	<form:form action="${addGiftWrap}" method="post">
@@ -17,7 +18,7 @@
 				<th>GiftWrap Image</th>
 			</tr>
 
-			<c:forEach items="${component.listOfGiftWraps}" var="giftWrap">
+			<c:forEach items="${listOfGiftWraps}" var="giftWrap">
 				<tr>
 					<%-- 				<th>${giftWrap.code}</th> --%>
 					<th><input type="radio" name="giftWrapCode" value="${giftWrap.giftWrapType}"></th>
@@ -31,7 +32,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<input type="hidden" name="code" value="${config.code}"/>
+		<input type="hidden" name="code" value="${productCode}"/>
 		<button type="submit"  >Save</button>
 	</form:form>
 </div>

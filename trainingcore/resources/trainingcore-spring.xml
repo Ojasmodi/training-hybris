@@ -595,10 +595,26 @@
 	</bean>
 
 	<!-- Our defined beans -->
+
 	<bean id="defaultGiftWrapService" class="org.training.core.services.impl.DefaultGiftWrapService">
-		<!-- <property name="giftWrapDAOImpl" ref="giftWrapDAOImpl" /> -->
+		<property name="giftWrapDAO" ref="defaultGiftWrapDAO" />
 	</bean>
 
-	<!-- <bean id="giftWrapDAOImpl" class="org.training.core.dao.impl.GiftWrapDAOImpl"> 
-		<property name="flexibleSearchService" ref="flexibleSearchService" /> </bean> -->
+	<bean id="defaultGiftWrapDAO" class="org.training.core.dao.impl.DefaultGiftWrapDAO">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+	</bean>
+
+	<alias name="defaultCustomCartEntryDao" alias="cartEntryDao" />
+	<bean id="defaultCustomCartEntryDao" class="org.training.core.dao.impl.DefaultCustomCartEntryDao"
+		parent="defaultCartEntryDao">
+	</bean>
+
+	<alias name="defaultCustomCartEntryService" alias="cartEntryService" />
+	<bean id="defaultCustomCartEntryService"
+		class="org.training.core.services.impl.DefaultCustomCartEntryService"
+		parent="defaultCartEntryService">
+		<property name="customCartEntryDao" ref="cartEntryDao" />
+		<property name="giftWrapService" ref="defaultGiftWrapService" />
+		<property name="enumerationService" ref="defaultEnumerationService" />
+	</bean>
 </beans>

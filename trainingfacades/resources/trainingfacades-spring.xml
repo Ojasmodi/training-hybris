@@ -220,4 +220,9 @@
 	<bean id="defaultCustomSearchResultProductPopulator" parent="defaultCommerceSearchResultProductPopulator"
 		class="org.training.facades.populators.CustomSearchResultProductPopulator">
 	</bean>
+	
+	<alias name="defaultCustomOrderEntryPopulator" alias="orderEntryPopulator" />
+	<bean id="defaultCustomOrderEntryPopulator" parent="defaultOrderEntryPopulator"
+		class="org.training.facades.populators.CustomOrderEntryPopulator">
+	</bean>
 </beans>

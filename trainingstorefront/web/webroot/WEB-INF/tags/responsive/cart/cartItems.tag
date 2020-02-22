@@ -26,6 +26,10 @@
 
 	<c:forEach items="${cartData.rootGroups}" var="group" varStatus="loop">
     	<cart:rootEntryGroup cartData="${cartData}" entryGroup="${group}"/>
+<!--     	/////////////////////////////////////// -->
+<%--     	 <c:set var = "cartDataCode" scope = "application" value = "${cartData.code}"/> --%>
+<!--     	 /////////////////////////////////////////////// -->
+<input type="hidden" value="${cartData.code}" id="cartDataCode">
         <p></p>
     </c:forEach>
 </ul>

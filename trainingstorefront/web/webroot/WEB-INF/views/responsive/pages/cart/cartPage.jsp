@@ -7,21 +7,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags"%>
 
-<style>
-
-
-.offers_list {
-	margin: 20px 0;
-	padding: 5px;
-	border: 1px dotted #000;
-}
-
-.offers_list_element {
-	vertical-align: top;
-	border-bottom: 1px dotted #a5a5a5;
-	padding: 20px 0 0 0;
-}
-</style>
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <template:page pageTitle="${pageTitle}">

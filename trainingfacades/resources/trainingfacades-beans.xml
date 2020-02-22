@@ -24,4 +24,9 @@
 
 		<property name="giftWrapAvailable" type="Boolean" />
 	</bean>
+	
+	<bean class="de.hybris.platform.commercefacades.order.data.OrderEntryData">
+
+		<property name="giftWrap" type="org.training.core.model.GiftWrapModel" />
+	</bean>
 </beans>

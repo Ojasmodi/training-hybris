@@ -140,7 +140,7 @@ public class CartPageController extends AbstractCartPageController
 	@RequestMapping(method = RequestMethod.GET)
 	public String showCart(final Model model) throws CMSItemNotFoundException
 	{
-		LOG.error("Reached");
+		//LOG.error("Reached");
 		// adding giftwrap model here
 		//addGiftWrapData(model);
 		//model.addAttribute("listOfGiftWraps", component.getListOfGiftWraps());
@@ -150,12 +150,6 @@ public class CartPageController extends AbstractCartPageController
 	/**
 	 * @param model
 	 */
-	//	private void addGiftWrapData(final Model model)
-	//	{
-	//		// XXX Auto-generated method stub
-	//		final List<GiftWrapModel> giftWraps = giftWrapService.getAllGiftWraps();
-	//		model.addAttribute("listOfGiftWraps", giftWraps);
-	//	}
 
 	protected String prepareCartUrl(final Model model) throws CMSItemNotFoundException
 	{
@@ -643,5 +637,7 @@ public class CartPageController extends AbstractCartPageController
 		final QuoteData quoteData = getCartFacade().getSessionCart().getQuoteData();
 		return quoteData != null ? String.format(REDIRECT_QUOTE_EDIT_URL, urlEncode(quoteData.getCode())) : REDIRECT_CART_URL;
 	}
+
+
 
 }

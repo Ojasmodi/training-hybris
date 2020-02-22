@@ -415,20 +415,20 @@ INSERT_UPDATE ContentSlotForPage ; $contentCV[unique=true] ; uid[unique=true] ; 
 #                                
 #                                ;                         ; welcomeInfoSlot  ; welcomeInfoComponent  
                                  
-                              
+                                 
 INSERT_UPDATE PageTemplate ; $contentCV[unique=true] ; uid[unique=true]     ; name                    ; frontendTemplateName        ; restrictedPageTypes(code) ; active[default=true]
                            ;                         ; GiftWrapPageTemplate ; Gift Wrap Page Template ; giftwrap/giftWrapLayoutPage ; ContentPage               
 
-                         
+                           
 INSERT_UPDATE ContentPage ; $contentCV[unique=true] ; uid[unique=true]    ; name                   ; masterTemplate(uid,$contentCV) ; label           ; defaultPage[default='true'] ; approvalStatus(code)[default='approved'] ; homepage[default='false']
                           ;                         ; giftWrapContentPage ; Gift Wrap Content Page ; GiftWrapPageTemplate           ; /giftWrapCMSPage
 
 # deleted                                  
 #INSERT_UPDATE Media ; $contentCV[unique=true] ; code[unique=true] ; @media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator] ; mime[default='image/png'] ; folder(qualifier)[default='images'] ; altText   
 #                   ;                         ; giftWrapMedia1    ; $mediaResource/images/gift_wrap/gift.png                                              ;                           ;                                     ; "STANDARD"
- 
+                          
  #deleted                                 
-INSERT_UPDATE GiftWrapComponent ; $contentCV[unique=true] ; uid[unique=true]  ; name                ; listOfGiftWraps(code) 
+INSERT_UPDATE GiftWrapComponent ; $contentCV[unique=true] ; uid[unique=true]  ; name                ; listOfGiftWraps(code)
                                 ;                         ; giftWrapComponent ; Gift Wrap Component ; 8,9                  
 
                                   
@@ -445,7 +445,7 @@ INSERT_UPDATE ContentSlotName ; name[unique=true] ; template(uid,$contentCV)[uni
 INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true]        ; name                        ; active ; cmsComponents(uid,$contentCV)
                           ;                         ; giftWrapTypeContentSlot ; Gift Wrap Type Content Slot ; true   ; giftWrapComponent            
 
-                       
+                          
 INSERT_UPDATE ContentSlotForTemplate ; $contentCV[unique=true] ; uid[unique=true]           ; position[unique=true] ; pageTemplate(uid,$contentCV)[unique=true][default='GiftWrapPageTemplate'] ; contentSlot(uid,$contentCV)[unique=true] ; allowOverwrite
                                      ;                         ; SiteLogo-GiftWrapPage      ; SiteLogo              ;                                                                           ; SiteLogoSlot                             ; true          
                                      ;                         ; NavigationBar-GiftWrapPage ; NavigationBar         ;                                                                           ; NavigationBarSlot                        ; true          
@@ -455,7 +455,13 @@ INSERT_UPDATE ContentSlotForTemplate ; $contentCV[unique=true] ; uid[unique=true
                                      ;                         ; SearchBox-GiftWrapPage     ; SearchBox             ;                                                                           ; SearchBoxSlot                            ; true          
                                      ;                         ; giftWrap-GiftWrapPage      ; giftWrapSlotName      ;                                                                           ; giftWrapTypeContentSlot                  ; true          
 
+# page template for gift-wrap options
+INSERT_UPDATE PageTemplate ; $contentCV[unique=true] ; uid[unique=true]        ; name                       ; frontendTemplateName     ; restrictedPageTypes(code) ; active[default=true]
+                           ;                         ; GiftWrapOptionsTemplate ; Gift Wrap options Template ; giftwrap/giftWrapOptions ; ContentPage               
 
+                           
+INSERT_UPDATE ContentPage ; $contentCV[unique=true] ; uid[unique=true]           ; name                   ; masterTemplate(uid,$contentCV) ; label           ; defaultPage[default='true'] ; approvalStatus(code)[default='approved'] ; homepage[default='false']
+                          ;                         ; giftWrapOptionsContentPage ; Gift Wrap Options Page ; GiftWrapOptionsTemplate        ; /giftWrapOptions
 
 
                                      

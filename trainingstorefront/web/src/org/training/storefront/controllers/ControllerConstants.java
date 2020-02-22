@@ -204,6 +204,13 @@ public interface ControllerConstants
 				String ReviewsTab = "fragments/product/reviewsTab"; // NOSONAR
 				String StorePickupSearchResults = "fragments/product/storePickupSearchResults"; // NOSONAR
 			}
+
+			///////////////////////////////////////////////////////////////////////////////
+			interface GiftWrap // NOSONAR
+			{
+				String GiftWrapOptionsPage = "pages/giftWrap/giftWrapOptions";
+			}
+			////////////////////////////////////////////////////////////////////////////////
 		}
 	}
 }

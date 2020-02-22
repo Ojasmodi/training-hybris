@@ -8,8 +8,6 @@ import de.hybris.platform.servicelayer.search.FlexibleSearchService;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.training.core.dao.GiftWrapDAO;
 import org.training.core.enums.GiftWrapType;
 import org.training.core.model.GiftWrapModel;
@@ -20,12 +18,20 @@ import org.training.core.model.GiftWrapModel;
  *
  */
 
-@Component(value = "giftWrapDAO")
 public class DefaultGiftWrapDAO implements GiftWrapDAO
 {
 
-	@Autowired
 	private FlexibleSearchService flexibleSearchService;
+
+
+	/**
+	 * @param flexibleSearchService
+	 *           the flexibleSearchService to set
+	 */
+	public void setFlexibleSearchService(final FlexibleSearchService flexibleSearchService)
+	{
+		this.flexibleSearchService = flexibleSearchService;
+	}
 
 
 	@Override
@@ -38,15 +44,14 @@ public class DefaultGiftWrapDAO implements GiftWrapDAO
 
 
 	@Override
-	public List<GiftWrapModel> getGiftWrapsByGiftWrapType(final GiftWrapType wrapType)
+	public GiftWrapModel getGiftWrapByGiftWrapType(final GiftWrapType wrapType)
 	{
 
-		// here {GiftWrap} is the itemType defined in xml file
-		final String queryString = //
-				"SELECT {pk} FROM {GiftWrap} WHERE {TYPE} = ?type "; // wrong way of writing query
+		final String queryString = "SELECT {pk} FROM {" + GiftWrapModel._TYPECODE + "} WHERE {" + GiftWrapModel.GIFTWRAPTYPE
+				+ "}=?wrapType";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
-		query.addQueryParameter("type", wrapType);
-		return flexibleSearchService.<GiftWrapModel> search(query).getResult();
+		query.addQueryParameter("wrapType", wrapType);
+		return flexibleSearchService.<GiftWrapModel> search(query).getResult().get(0);
 
 	}
 

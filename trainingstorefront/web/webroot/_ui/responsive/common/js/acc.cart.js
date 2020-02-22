@@ -7,7 +7,8 @@ ACC.cart = {
         "bindMultiDEntryRemoval",
         "bindMultidCartProduct",
         ["bindApplyVoucher", $("#js-voucher-apply-btn").length != 0],
-        ["bindToReleaseVoucher", $("#js-applied-vouchers").length != 0]
+        ["bindToReleaseVoucher", $("#js-applied-vouchers").length != 0],
+        "openGiftWrapPopup"
     ],
 
     bindHelp: function () {
@@ -394,6 +395,23 @@ ACC.cart = {
         $('.js-release-voucher-remove-btn').on("click", function (event) {
             $(this).closest('form').submit();
         });
-    }
+    },
+    
+    openGiftWrapPopup : function() {
+		$(document).on("click", "#js-gift-wrap", function(e) {
+			e.preventDefault();
+			var title = $(this).data("help");
+			var code = $(this).data("code");
+			var cartEntryCode = document.getElementById("cartDataCode").value
+			//console.log(cartEntryCode)
+			var url="giftWrapOptions/add?code="+code+"&cartEntryCode="+cartEntryCode;
+			console.log(url)
+			ACC.colorbox.open(ACC.common.encodeHtml(title), {
+				href : url,
+				//width : "40%"
+			});
+			// $.colorbox({href:"./../../abc.html"});
+		})
+	},
 
 };
