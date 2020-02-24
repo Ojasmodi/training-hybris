@@ -34,29 +34,26 @@ public class GiftWrapController extends AbstractPageController
 
 	@RequestMapping(value = "/giftwrap/add", method = RequestMethod.POST, produces = "application/json")
 	public String addGiftWrapToOrderEntry(@RequestParam("orderEntryPk") final String orderEntryPk,
-			@RequestParam("cartPk") final String cartPk, @RequestParam("giftWrapCode") final String giftWrapCode, final Model model)
+			@RequestParam("giftWrapCode") final String giftWrapCode, final Model model)
 	{
-		cartEntryService.setGiftWrapForCartOrderEntry(orderEntryPk, giftWrapCode, cartPk);
+		cartEntryService.setGiftWrapForCartOrderEntry(orderEntryPk, giftWrapCode);
 
 		return REDIRECT_PREFIX + "/cart";
 	}
 
 	@RequestMapping(value = "/giftwrap/remove", method = RequestMethod.POST, produces = "application/json")
-	public String removeGiftWrapFromOrderEntry(@RequestParam("orderEntryPk") final String orderEntryPk,
-			@RequestParam("cartPk") final String cartPk, final Model model)
+	public String removeGiftWrapFromOrderEntry(@RequestParam("orderEntryPk") final String orderEntryPk, final Model model)
 	{
-		cartEntryService.removeGiftWrapFromOrderEntry(orderEntryPk, cartPk);
+		cartEntryService.removeGiftWrapFromOrderEntry(orderEntryPk);
 
 		return REDIRECT_PREFIX + "/cart";
 	}
 
 	// to set gift-wrap options for color-box and setting the pk of that particular cart-order-entry
 	@RequestMapping(value = "/giftWrapOptions", method = RequestMethod.GET)
-	public String getGiftWrapOptions(@RequestParam("orderEntryPk") final String orderEntryPk,
-			@RequestParam("cartPk") final String cartPk, final Model model)
+	public String getGiftWrapOptions(@RequestParam("orderEntryPk") final String orderEntryPk, final Model model)
 	{
 		model.addAttribute("orderEntryPk", orderEntryPk);
-		model.addAttribute("cartPk", cartPk);
 		final List<GiftWrapModel> listOfGiftWraps = giftWrapService.getAllGiftWraps();
 		model.addAttribute("listOfGiftWraps", listOfGiftWraps);
 		return "pages/giftwrap/giftWrapOptions";

@@ -402,12 +402,9 @@ ACC.cart = {
 			e.preventDefault();
 			var title = $(this).data("help");
 			var orderEntryPk = $(this).data("orderentrypk");
-			var cartPk = $(this).data("cartpk");
-			var url="giftWrapOptions?cartPk="+cartPk+"&orderEntryPk="+orderEntryPk;
-			console.log(url)
+			var url="giftWrapOptions?orderEntryPk="+orderEntryPk;
 			ACC.colorbox.open(ACC.common.encodeHtml(title), {
 				href : url,
-				//width : "40%"
 			});
 		})
 	},

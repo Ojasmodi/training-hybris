@@ -12,7 +12,6 @@ import de.hybris.platform.order.impl.DefaultCartEntryService;
 
 import java.util.List;
 
-import org.training.core.dao.CustomCartEntryDao;
 import org.training.core.enums.GiftWrapType;
 import org.training.core.model.GiftWrapModel;
 import org.training.core.services.CustomCartEntryService;
@@ -26,14 +25,14 @@ import org.training.core.services.GiftWrapService;
 public class DefaultCustomCartEntryService extends DefaultCartEntryService implements CustomCartEntryService
 
 {
-	private CustomCartEntryDao customCartEntryDao;
+	//private CustomCartEntryDao customCartEntryDao;
 
 	private GiftWrapService giftWrapService;
 
 	private EnumerationService enumerationService;
 
 	@Override
-	public void setGiftWrapForCartOrderEntry(final String cartOrderEntryPk, final String giftWrapCode, final String cartPk)
+	public void setGiftWrapForCartOrderEntry(final String cartOrderEntryPk, final String giftWrapCode)
 	{
 		final CartEntryModel cartEntryModel = (CartEntryModel) modelService.get(PK.parse(cartOrderEntryPk));
 
@@ -42,7 +41,9 @@ public class DefaultCustomCartEntryService extends DefaultCartEntryService imple
 		final GiftWrapModel giftWrapModel = giftWrapService.getGiftWrapByGiftWrapType(giftWrapType);
 		cartEntryModel.setGiftWrap(giftWrapModel);
 
-		final CartModel cartModel = (CartModel) modelService.get(PK.parse(cartPk));
+		//final CartModel cartModel = (CartModel) modelService.get(PK.parse(cartPk));
+		final CartModel cartModel = cartEntryModel.getOrder();
+
 		final List<AbstractOrderEntryModel> abstractOrderEntries = cartModel.getEntries();
 
 		double cartTotalPrice = 0.0;
@@ -66,11 +67,13 @@ public class DefaultCustomCartEntryService extends DefaultCartEntryService imple
 	}
 
 	@Override
-	public void removeGiftWrapFromOrderEntry(final String cartOrderEntryPk, final String cartPk)
+	public void removeGiftWrapFromOrderEntry(final String cartOrderEntryPk)
 	{
 		final CartEntryModel cartEntryModel = (CartEntryModel) modelService.get(PK.parse(cartOrderEntryPk));
 
-		final CartModel cartModel = (CartModel) modelService.get(PK.parse(cartPk));
+		//final CartModel cartModel = (CartModel) modelService.get(PK.parse(cartPk));
+		final CartModel cartModel = cartEntryModel.getOrder();
+
 		final List<AbstractOrderEntryModel> abstractOrderEntries = cartModel.getEntries();
 
 		double cartTotalPrice = 0.0;
@@ -97,10 +100,10 @@ public class DefaultCustomCartEntryService extends DefaultCartEntryService imple
 	}
 
 
-	public void setCustomCartEntryDao(final CustomCartEntryDao customCartEntryDao)
-	{
-		this.customCartEntryDao = customCartEntryDao;
-	}
+	//	public void setCustomCartEntryDao(final CustomCartEntryDao customCartEntryDao)
+	//	{
+	//		this.customCartEntryDao = customCartEntryDao;
+	//	}
 
 	/**
 	 * @param giftWrapService

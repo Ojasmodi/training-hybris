@@ -13,13 +13,13 @@ import de.hybris.platform.order.CartEntryService;
 public interface CustomCartEntryService extends CartEntryService
 {
 
-	public void setGiftWrapForCartOrderEntry(final String cartEntryProductCode, final String giftWrapCode, String cartEntryCode);
+	public void setGiftWrapForCartOrderEntry(final String cartEntryProductCode, final String giftWrapCode);
 
 	/**
 	 * @param orderEntryPk
 	 * @param cartPk
 	 */
-	public void removeGiftWrapFromOrderEntry(String orderEntryPk, String cartPk);
+	public void removeGiftWrapFromOrderEntry(String orderEntryPk);
 
 
 }

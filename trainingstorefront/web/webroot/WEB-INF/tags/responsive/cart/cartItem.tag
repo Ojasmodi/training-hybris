@@ -111,8 +111,7 @@
 								<c:if test="${entry.product.giftWrapAvailable}">
 									<button id="js-gift-wrap" style="color: green;"
 										data-help="Gift-Wrap Options"
-										data-orderentrypk="${entry.orderEntryDataPk}"
-										data-cartpk="${cartPk}">
+										data-orderentrypk="${entry.orderEntryDataPk}">
 										<b>Select Gift Wrap</b> &nbsp; <span
 											class="glyphicon glyphicon-gift" aria-hidden="true"></span>
 									</button>
@@ -121,7 +120,6 @@
 										<form:form action="${giftwrapremove}" method="post">
 											<input type="hidden" name="orderEntryPk"
 												value="${entry.orderEntryDataPk}" />
-											<input type="hidden" name="cartPk" value="${cartPk}" />
 											<button type="submit" aria-hidden="true">
 												Remove&nbsp;<span class="glyphicon glyphicon-scissors"></span>
 											</button>

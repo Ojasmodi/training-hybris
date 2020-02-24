@@ -228,10 +228,7 @@
 		class="org.training.facades.populators.CustomOrderEntryPopulator">
 	</bean>
 
-	<alias name="defaultCustomCartPopulator" alias="cartPopulator" />
-	<bean id="defaultCustomCartPopulator" parent="defaultCartPopulator"
-		class="org.training.facades.populators.CustomCartPopulator">
-	</bean>
+	
 
 	<!-- /////////////////////////////////////////// -->
 

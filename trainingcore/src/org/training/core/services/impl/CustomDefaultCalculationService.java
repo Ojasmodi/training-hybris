@@ -69,10 +69,7 @@ public class CustomDefaultCalculationService extends DefaultCalculationService
 		}
 	}
 
-	/**
-	 * @param commonI18NService
-	 *           the commonI18NService to set
-	 */
+
 	@Override
 	public void setCommonI18NService(final CommonI18NService commonI18NService)
 	{
@@ -80,10 +77,7 @@ public class CustomDefaultCalculationService extends DefaultCalculationService
 		this.commonI18NService = commonI18NService;
 	}
 
-	/**
-	 * @param orderRequiresCalculationStrategy
-	 *           the orderRequiresCalculationStrategy to set
-	 */
+
 	@Override
 	public void setOrderRequiresCalculationStrategy(final OrderRequiresCalculationStrategy orderRequiresCalculationStrategy)
 	{

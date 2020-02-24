@@ -614,7 +614,7 @@
 	<bean id="defaultCustomCartEntryService"
 		class="org.training.core.services.impl.DefaultCustomCartEntryService"
 		parent="defaultCartEntryService">
-		<property name="customCartEntryDao" ref="cartEntryDao" />
+<!-- 		<property name="customCartEntryDao" ref="cartEntryDao" /> -->
 		<property name="giftWrapService" ref="defaultGiftWrapService" />
 		<property name="enumerationService" ref="defaultEnumerationService" />
 	</bean>

@@ -31,8 +31,4 @@
 		<property name="orderEntryDataPk" type="de.hybris.platform.core.PK" />
 	</bean>
 	
-	<bean class="de.hybris.platform.commercefacades.order.data.CartData">
-
-		<property name="cartDataPk" type="de.hybris.platform.core.PK" />
-	</bean>
 </beans>
