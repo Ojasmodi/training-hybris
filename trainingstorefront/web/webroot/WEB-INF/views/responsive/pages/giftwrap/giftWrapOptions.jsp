@@ -32,7 +32,8 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<input type="hidden" name="code" value="${productCode}"/>
+		<input type="hidden" name="orderEntryPk" value="${orderEntryPk}"/>
+		<input type="hidden" name="cartPk" value="${cartPk}"/>
 		<button type="submit"  >Save</button>
 	</form:form>
 </div>

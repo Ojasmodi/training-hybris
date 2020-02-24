@@ -3,9 +3,14 @@
  */
 package org.training.core.services.impl;
 
+import de.hybris.platform.core.PK;
+import de.hybris.platform.core.model.order.AbstractOrderEntryModel;
 import de.hybris.platform.core.model.order.CartEntryModel;
+import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.enumeration.EnumerationService;
 import de.hybris.platform.order.impl.DefaultCartEntryService;
+
+import java.util.List;
 
 import org.training.core.dao.CustomCartEntryDao;
 import org.training.core.enums.GiftWrapType;
@@ -21,10 +26,77 @@ import org.training.core.services.GiftWrapService;
 public class DefaultCustomCartEntryService extends DefaultCartEntryService implements CustomCartEntryService
 
 {
-	/**
-	 * @param customCartEntryDao
-	 *           the customCartEntryDao to set
-	 */
+	private CustomCartEntryDao customCartEntryDao;
+
+	private GiftWrapService giftWrapService;
+
+	private EnumerationService enumerationService;
+
+	@Override
+	public void setGiftWrapForCartOrderEntry(final String cartOrderEntryPk, final String giftWrapCode, final String cartPk)
+	{
+		final CartEntryModel cartEntryModel = (CartEntryModel) modelService.get(PK.parse(cartOrderEntryPk));
+
+		final GiftWrapType giftWrapType = enumerationService.getEnumerationValue(GiftWrapType.class, giftWrapCode);
+
+		final GiftWrapModel giftWrapModel = giftWrapService.getGiftWrapByGiftWrapType(giftWrapType);
+		cartEntryModel.setGiftWrap(giftWrapModel);
+
+		final CartModel cartModel = (CartModel) modelService.get(PK.parse(cartPk));
+		final List<AbstractOrderEntryModel> abstractOrderEntries = cartModel.getEntries();
+
+		double cartTotalPrice = 0.0;
+		for (final AbstractOrderEntryModel aem : abstractOrderEntries)
+		{
+			double entryPrice = 0.0;
+			if (aem.getPk().toString().equals(cartOrderEntryPk))
+			{
+				entryPrice = (cartEntryModel.getBasePrice() + giftWrapModel.getCost()) * cartEntryModel.getQuantity();
+				aem.setTotalPrice(entryPrice);
+				modelService.save(cartEntryModel);
+			}
+			else
+			{
+				entryPrice = aem.getTotalPrice();
+			}
+			cartTotalPrice += entryPrice;
+		}
+		cartModel.setTotalPrice(cartTotalPrice);
+		modelService.save(cartModel);
+	}
+
+	@Override
+	public void removeGiftWrapFromOrderEntry(final String cartOrderEntryPk, final String cartPk)
+	{
+		final CartEntryModel cartEntryModel = (CartEntryModel) modelService.get(PK.parse(cartOrderEntryPk));
+
+		final CartModel cartModel = (CartModel) modelService.get(PK.parse(cartPk));
+		final List<AbstractOrderEntryModel> abstractOrderEntries = cartModel.getEntries();
+
+		double cartTotalPrice = 0.0;
+		for (final AbstractOrderEntryModel aem : abstractOrderEntries)
+		{
+			double entryPrice = 0.0;
+			if (aem.getPk().toString().equals(cartOrderEntryPk))
+			{
+				entryPrice = cartEntryModel.getBasePrice() * cartEntryModel.getQuantity();
+				aem.setTotalPrice(entryPrice);
+				cartEntryModel.setGiftWrap(null);
+				modelService.save(cartEntryModel);
+			}
+			else
+			{
+				entryPrice = aem.getTotalPrice();
+			}
+			cartTotalPrice += entryPrice;
+		}
+		cartModel.setTotalPrice(cartTotalPrice);
+		modelService.save(cartModel);
+
+
+	}
+
+
 	public void setCustomCartEntryDao(final CustomCartEntryDao customCartEntryDao)
 	{
 		this.customCartEntryDao = customCartEntryDao;
@@ -48,24 +120,8 @@ public class DefaultCustomCartEntryService extends DefaultCartEntryService imple
 		this.enumerationService = enumerationService;
 	}
 
-	private CustomCartEntryDao customCartEntryDao;
 
-	private GiftWrapService giftWrapService;
 
-	private EnumerationService enumerationService;
 
-	//ModelService modelService;
-
-	public void setGiftWrapForCartOrderEntry(final String cartEntryProductCode, final String giftWrapCode,
-			final String cartEntryCode)
-	{
-		final CartEntryModel cartEntryModel = customCartEntryDao.findCartEntryByCartEntryProductCode(cartEntryProductCode);
-		final GiftWrapType giftWrapType = enumerationService.getEnumerationValue(GiftWrapType.class, giftWrapCode);
-		final GiftWrapModel giftWrapModel = giftWrapService.getGiftWrapByGiftWrapType(giftWrapType);
-		cartEntryModel.setGiftWrap(giftWrapModel);
-		cartEntryModel.setTotalPrice((cartEntryModel.getBasePrice() + giftWrapModel.getCost()) * cartEntryModel.getQuantity());
-		//CartModel cartModel=findByCartCode(cartEntryCode);
-		modelService.save(cartEntryModel);
-	}
 
 }

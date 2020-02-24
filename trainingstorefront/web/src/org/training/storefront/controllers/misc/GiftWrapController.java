@@ -33,19 +33,30 @@ public class GiftWrapController extends AbstractPageController
 	private GiftWrapService giftWrapService;
 
 	@RequestMapping(value = "/giftwrap/add", method = RequestMethod.POST, produces = "application/json")
-	public String addGiftWrapToOrderEntry(@RequestParam("code") final String cartEntryProductCode,
-			@RequestParam("cartEntryCode") final String cartCode, @RequestParam("giftWrapCode") final String giftWrapCode,
-			final Model model)
+	public String addGiftWrapToOrderEntry(@RequestParam("orderEntryPk") final String orderEntryPk,
+			@RequestParam("cartPk") final String cartPk, @RequestParam("giftWrapCode") final String giftWrapCode, final Model model)
 	{
-		cartEntryService.setGiftWrapForCartOrderEntry(cartEntryProductCode, giftWrapCode, cartCode);
+		cartEntryService.setGiftWrapForCartOrderEntry(orderEntryPk, giftWrapCode, cartPk);
 
 		return REDIRECT_PREFIX + "/cart";
 	}
 
-	@RequestMapping(value = "/giftWrapOptions", method = RequestMethod.GET)
-	public String getGiftWrapOptions(@RequestParam("code") final String cartEntryProductCode, final Model model)
+	@RequestMapping(value = "/giftwrap/remove", method = RequestMethod.POST, produces = "application/json")
+	public String removeGiftWrapFromOrderEntry(@RequestParam("orderEntryPk") final String orderEntryPk,
+			@RequestParam("cartPk") final String cartPk, final Model model)
 	{
-		model.addAttribute("productCode", cartEntryProductCode);
+		cartEntryService.removeGiftWrapFromOrderEntry(orderEntryPk, cartPk);
+
+		return REDIRECT_PREFIX + "/cart";
+	}
+
+	// to set gift-wrap options for color-box and setting the pk of that particular cart-order-entry
+	@RequestMapping(value = "/giftWrapOptions", method = RequestMethod.GET)
+	public String getGiftWrapOptions(@RequestParam("orderEntryPk") final String orderEntryPk,
+			@RequestParam("cartPk") final String cartPk, final Model model)
+	{
+		model.addAttribute("orderEntryPk", orderEntryPk);
+		model.addAttribute("cartPk", cartPk);
 		final List<GiftWrapModel> listOfGiftWraps = giftWrapService.getAllGiftWraps();
 		model.addAttribute("listOfGiftWraps", listOfGiftWraps);
 		return "pages/giftwrap/giftWrapOptions";

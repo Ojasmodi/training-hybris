@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 21 Feb, 2020 12:11:03 PM                    ---
+ * --- Generated at 24 Feb, 2020 4:14:11 PM                     ---
  * ----------------------------------------------------------------
  */
 package org.training.core.constants;

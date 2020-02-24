@@ -19,6 +19,7 @@ public class CustomOrderEntryPopulator extends OrderEntryPopulator
 	{
 		entry.setEntryNumber(orderEntry.getEntryNumber());
 		entry.setQuantity(orderEntry.getQuantity());
+		entry.setOrderEntryDataPk(orderEntry.getPk());
 		entry.setGiftWrap(orderEntry.getGiftWrap());
 		adjustUpdateable(entry, orderEntry);
 	}

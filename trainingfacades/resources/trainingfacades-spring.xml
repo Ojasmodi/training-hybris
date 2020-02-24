@@ -216,13 +216,23 @@
 	<bean id="genderData" class="org.training.facades.product.data.GenderData"
 		scope="prototype" />
 
+	<!-- ////////////////////////////////////////////////////////////// -->
+
 	<alias name="defaultCustomSearchResultProductPopulator" alias="commerceSearchResultProductPopulator" />
 	<bean id="defaultCustomSearchResultProductPopulator" parent="defaultCommerceSearchResultProductPopulator"
 		class="org.training.facades.populators.CustomSearchResultProductPopulator">
 	</bean>
-	
+
 	<alias name="defaultCustomOrderEntryPopulator" alias="orderEntryPopulator" />
 	<bean id="defaultCustomOrderEntryPopulator" parent="defaultOrderEntryPopulator"
 		class="org.training.facades.populators.CustomOrderEntryPopulator">
 	</bean>
+
+	<alias name="defaultCustomCartPopulator" alias="cartPopulator" />
+	<bean id="defaultCustomCartPopulator" parent="defaultCartPopulator"
+		class="org.training.facades.populators.CustomCartPopulator">
+	</bean>
+
+	<!-- /////////////////////////////////////////// -->
+
 </beans>

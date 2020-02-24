@@ -105,20 +105,31 @@
 							<span class="stock"><spring:theme
 									code="product.variants.in.stock" /></span>
 
+							<!-- //////////////////////////////////////// -->
 							<!-- gift wrap availability -->
 							<div>
-							
 								<c:if test="${entry.product.giftWrapAvailable}">
-									<a id="js-gift-wrap" style="color: green;"
+									<button id="js-gift-wrap" style="color: green;"
 										data-help="Gift-Wrap Options"
-										data-code="${entry.product.code}" data-cartEntryCode="${cartDataCode}">
-										<b>Select Gift Wrap ${cartDataCode}</b> &nbsp; <span
-										class="glyphicon glyphicon-gift" aria-hidden="true"></span>
-									</a>
+										data-orderentrypk="${entry.orderEntryDataPk}"
+										data-cartpk="${cartPk}">
+										<b>Select Gift Wrap</b> &nbsp; <span
+											class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+									</button>
 									<c:if test="${not empty entry.giftWrap}">${entry.giftWrap.giftWrapType} Selected
-										</c:if>
+									<c:url value="/giftwrap/remove" var="giftwrapremove" />
+										<form:form action="${giftwrapremove}" method="post">
+											<input type="hidden" name="orderEntryPk"
+												value="${entry.orderEntryDataPk}" />
+											<input type="hidden" name="cartPk" value="${cartPk}" />
+											<button type="submit" aria-hidden="true">
+												Remove&nbsp;<span class="glyphicon glyphicon-scissors"></span>
+											</button>
+										</form:form>
+									</c:if>
 								</c:if>
 							</div>
+							<!-- ////////////////////////////////////////							 -->
 
 						</c:when>
 						<c:otherwise>
@@ -209,7 +220,6 @@
 					code="basket.page.itemPrice" />: </span>
 			<format:price priceData="${entry.basePrice}"
 				displayFreeForZero="true" />
-			Gift Wrap cost: ${entry.giftWrap.cost*entry.quantity}
 
 		</div> <%-- quantity --%>
 		<div class="item__quantity hidden-xs hidden-sm">
@@ -280,8 +290,18 @@
 			</c:if>
 		</div> <%-- total --%> <ycommerce:testId code="cart_totalProductPrice_label">
 			<div class="item__total js-item-total hidden-xs hidden-sm">
+
+
 				<format:price priceData="${entry.totalPrice}"
 					displayFreeForZero="true" />
+
+				<!-- 		////////////////////////////////////// -->
+				<br>
+				<c:if test="${not empty entry.giftWrap}">
+					Included gift-wrap cost: ${entry.giftWrap.cost*entry.quantity}
+					</c:if>
+				<!-- 	 ////////////////////////////////////////// -->
+
 			</div>
 		</ycommerce:testId> <%-- menu icon --%>
 		<div class="item__menu">

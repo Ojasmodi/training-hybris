@@ -595,6 +595,7 @@
 	</bean>
 
 	<!-- Our defined beans -->
+	<!-- //////////////////////////////////////////////////////////////////// -->
 
 	<bean id="defaultGiftWrapService" class="org.training.core.services.impl.DefaultGiftWrapService">
 		<property name="giftWrapDAO" ref="defaultGiftWrapDAO" />
@@ -616,5 +617,12 @@
 		<property name="customCartEntryDao" ref="cartEntryDao" />
 		<property name="giftWrapService" ref="defaultGiftWrapService" />
 		<property name="enumerationService" ref="defaultEnumerationService" />
+	</bean>
+	
+	<alias name="customDefaultCalculationService" alias="calculationService" />
+	<bean id="customDefaultCalculationService" class="org.training.core.services.impl.CustomDefaultCalculationService" parent="defaultCalculationService">
+ 			<property name="orderRequiresCalculationStrategy" ref="orderRequiresCalculationStrategy" />
+ 			<property name="commonI18NService" ref="commonI18NService" /> 
+	
 	</bean>
 </beans>

@@ -60,7 +60,6 @@
 
 	</li>
 </c:if>
-
 <c:forEach items="${cartData.entries}" var="entry" varStatus="loop">
 	<c:if test="${entry.deliveryPointOfService == null}">
 		<c:url value="${entry.product.url}" var="productUrl"/>
